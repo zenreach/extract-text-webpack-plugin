@@ -3,6 +3,7 @@
 	Author Tobias Koppers @sokra
 */
 var fs = require("fs");
+var path = require("path");
 var loaderUtils = require("loader-utils");
 var NodeTemplatePlugin = require("webpack/lib/node/NodeTemplatePlugin");
 var NodeTargetPlugin = require("webpack/lib/node/NodeTargetPlugin");
@@ -10,7 +11,7 @@ var LibraryTemplatePlugin = require("webpack/lib/LibraryTemplatePlugin");
 var SingleEntryPlugin = require("webpack/lib/SingleEntryPlugin");
 var LimitChunkCountPlugin = require("webpack/lib/optimize/LimitChunkCountPlugin");
 
-var NS = fs.realpathSync(__dirname);
+const NS = path.dirname(fs.realpathSync(__filename));
 
 module.exports = function(source) {
 	return source;

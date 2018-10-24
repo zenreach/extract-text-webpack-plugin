@@ -3,6 +3,7 @@
 	Author Tobias Koppers @sokra
 */
 var fs = require('fs');
+var path = require('path');
 var ConcatSource = require("webpack-sources").ConcatSource;
 var async = require("async");
 var ExtractedModule = require("./ExtractedModule");
@@ -10,9 +11,8 @@ var Chunk = require("webpack/lib/Chunk");
 var OrderUndefinedError = require("./OrderUndefinedError");
 var loaderUtils = require("loader-utils");
 var validateOptions = require('schema-utils');
-var path = require('path');
 
-var NS = fs.realpathSync(__dirname);
+const NS = path.dirname(fs.realpathSync(__filename));
 
 var nextId = 0;
 
@@ -337,7 +337,7 @@ ExtractTextPlugin.prototype.apply = function(compiler) {
 					});
 
 					var file = (isFunction(filename)) ? filename(getPath) : getPath(filename);
-					
+
 					compilation.assets[file] = source;
 					chunk.files.push(file);
 				}
